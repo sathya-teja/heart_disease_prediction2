@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HeartSense-AI | AI-Powered Heart Disease Prediction</title>
+  <link rel="stylesheet" href="/static/css/main.css">
+  <link rel="icon" type="image/svg+xml" href="/static/HeartSense-AI.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <!-- Chart.js for prediction graphs -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-left">
+      <div class="navbar-logo">
+        <!-- Example SVG icon for logo -->
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="14" fill="#1976d2"/><path d="M14 7v14M7 14h14" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
+      </div>
+      <div>
+        <div class="navbar-title">HeartSense-AI</div>
+        <div class="navbar-subtitle">AI-Powered Heart Disease Prediction</div>
+      </div>
+    </div>
+    <div class="navbar-right">
+      <a class="navbar-link" href="#prediction-form-section">Prediction</a>
+      <a class="navbar-link" href="#about">About</a>
+      <button class="theme-toggle" title="Toggle theme">
+        <!-- Moon SVG -->
+        <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 0111.21 3a7 7 0 100 18 9 9 0 009.79-8.21z" stroke="#1976d2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-icons">
+      <div class="hero-icon">
+        <!-- Heart SVG -->
+        <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path d="M12 21s-6-4.35-9-8.5C-1.5 7.5 4.5 2.5 12 8.5c7.5-6 13.5-1 9 4C18 16.65 12 21 12 21z" stroke="#1976d2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="hero-icon">
+        <!-- Pulse SVG -->
+        <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path d="M3 12h4l3 8 4-16 3 8h4" stroke="#1976d2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="hero-icon">
+        <!-- Brain SVG -->
+        <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path d="M15.5 8A2.5 2.5 0 0013 5.5V5a2 2 0 00-4 0v.5A2.5 2.5 0 006.5 8M12 21v-2M8 21v-2M16 21v-2M19 17a2 2 0 002-2v-2a2 2 0 00-2-2h-1.5M5 17a2 2 0 01-2-2v-2a2 2 0 012-2h1.5" stroke="#1976d2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </div>
+    <div class="hero-title">AI-Powered Heart Disease Risk Assessment</div>
+    <div class="hero-desc">HeartSense-AI uses advanced machine learning to predict heart disease risk based on clinical data inputs. Get instant insights from your medical parameters.</div>
+    <div class="hero-actions">
+      <button class="btn-primary" id="scrollToPrediction"><span>Start Prediction</span> <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button class="btn-secondary">Learn More</button>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path d="M12 20v-6M12 4v2M4 12h2M18 12h2M7.76 7.76l1.42 1.42M16.24 16.24l1.42 1.42M7.76 16.24l1.42-1.42M16.24 7.76l1.42-1.42" stroke="#1976d2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="feature-title">Clinical Data Analysis</div>
+      <div class="feature-desc">Analyzes 13 key medical parameters</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 0v4m0 8v4m4-4h4m-8 0H4" stroke="#1976d2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="feature-title">Machine Learning</div>
+      <div class="feature-desc">Trained on UCI Heart Disease Dataset</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path d="M12 8v4l3 3" stroke="#1976d2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="#1976d2" stroke-width="2"/></svg>
+      </div>
+      <div class="feature-title">Instant Results</div>
+      <div class="feature-desc">Get immediate risk assessment with clear insights</div>
+    </div>
+  </section>
+
+  <!-- Prediction Form Section -->
+  <section id="prediction-form-section">
+    <h2>Enter Your Medical Parameters</h2>
+    <form id="predictionForm" method="POST" action="/predict">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="age">Age</label>
+          <input type="number" id="age" name="age" min="18" max="100" required>
+          <small>18-100 years</small>
+        </div>
+        <div class="form-group">
+          <label for="sex">Gender</label>
+          <select id="sex" name="sex" required>
+            <option value="">Select</option>
+            <option value="1">Male</option>
+            <option value="0">Female</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="cp">Chest Pain Type</label>
+          <select id="cp" name="cp" required>
+            <option value="">Select</option>
+            <option value="1">Typical Angina</option>
+            <option value="2">Atypical Angina</option>
+            <option value="3">Non-Anginal Pain</option>
+            <option value="4">Asymptomatic</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="trestbps">Resting Blood Pressure</label>
+          <input type="number" id="trestbps" name="trestbps" min="80" max="200" required>
+          <small>mm Hg (80-200)</small>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="chol">Serum Cholesterol</label>
+          <input type="number" id="chol" name="chol" min="100" max="600" required>
+          <small>mg/dl (100-600)</small>
+        </div>
+        <div class="form-group">
+          <label for="fbs">Fasting Blood Sugar</label>
+          <select id="fbs" name="fbs" required>
+            <option value="">Select</option>
+            <option value="1">&gt; 120 mg/dl</option>
+            <option value="0">≤ 120 mg/dl</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="restecg">Resting ECG</label>
+          <select id="restecg" name="restecg" required>
+            <option value="">Select</option>
+            <option value="0">Normal</option>
+            <option value="1">ST-T abnormality</option>
+            <option value="2">LV hypertrophy</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="thalach">Max Heart Rate</label>
+          <input type="number" id="thalach" name="thalach" min="60" max="220" required>
+          <small>60-220</small>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="exang">Exercise Induced Angina</label>
+          <select id="exang" name="exang" required>
+            <option value="">Select</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="oldpeak">ST Depression</label>
+          <input type="number" id="oldpeak" name="oldpeak" min="0" max="10" step="0.1" required>
+          <small>0-10</small>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="slope">ST Slope</label>
+          <select id="slope" name="slope" required>
+            <option value="">Select</option>
+            <option value="1">Upsloping</option>
+            <option value="2">Flat</option>
+            <option value="3">Downsloping</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="ca">Major Vessels</label>
+          <select id="ca" name="ca" required>
+            <option value="">Select</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="thal">Thalassemia</label>
+          <select id="thal" name="thal" required>
+            <option value="">Select</option>
+            <option value="3">Normal</option>
+            <option value="6">Fixed Defect</option>
+            <option value="7">Reversible Defect</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="btn-primary">Analyze Risk</button>
+    </form>
+  </section>
+
+  <!-- Results Section (hidden by default) -->
+  <section id="results-section"></section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div style="font-weight:700;color:#1976d2;font-size:1.1rem;">HeartSense-AI</div>
+    <div style="margin-top:4px;font-size:0.98rem;">&copy; 2025 HeartSense-AI. All rights reserved. For educational purposes only.</div>
+  </footer>
+
+  <script>
+    // Smooth scroll to prediction form
+    document.getElementById('scrollToPrediction').onclick = function(e) {
+      e.preventDefault();
+      document.getElementById('prediction-form-section').scrollIntoView({ behavior: 'smooth' });
+    };
+  </script>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
