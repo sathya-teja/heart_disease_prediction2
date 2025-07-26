@@ -1,4 +1,4 @@
-
+import os
 from flask import Flask, render_template, request, jsonify
 import numpy as np
 import joblib
@@ -87,4 +87,5 @@ def dashboard():
         negative_cases=stats['negative_cases'],
         predictions=predictions)
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(debug=False, host='0.0.0.0', port=port)
