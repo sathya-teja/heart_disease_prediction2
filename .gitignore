@@ -1,0 +1,51 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+*.pyd
+*.pyo
+
+# Virtual environment
+env/
+venv/
+.venv/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Environment variables
+.env
+.env.*
+
+# Mac OS
+.DS_Store
+
+# VS Code settings
+.vscode/
+
+# Python egg
+*.egg
+*.egg-info/
+dist/
+build/
+*.manifest
+*.spec
+
+# Model files
+*.pkl
+*.joblib
+
+# Logs
+*.log
+
+# System files
+Thumbs.db
+ehthumbs.db
+
+# Uploaded files
+*.csv
+*.xlsx
+
+# Render or Heroku build files
+*.sqlite3
+instance/
