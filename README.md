@@ -20,7 +20,20 @@ Generate a professional, well-formatted README or documentation that can be used
 
 ## Overview
 
+
 HeartSense-AI is a professional, research-grade web application for heart disease risk prediction. It leverages machine learning (Random Forest, Logistic Regression, SVM, and more) on the UCI Heart Disease dataset, providing instant, interpretable predictions through a modern Flask web interface. The project emphasizes code quality, modularity, and model interpretability, and is suitable for academic, clinical, or educational use.
+
+---
+
+## Live Demo
+
+🌐 **Try HeartSense-AI Online:**  
+[https://heartsense-ai-oaqg.onrender.com](https://heartsense-ai-oaqg.onrender.com)
+
+## GitHub Repository
+
+📂 **Source Code:**  
+[https://github.com/sathya-teja/heart_disease_prediction2](https://github.com/sathya-teja/heart_disease_prediction2)
 
 ---
 
